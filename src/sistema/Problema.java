@@ -23,19 +23,17 @@ public class Problema implements CoordenadasGeo {
         maxCol = 9;
         //colocar paredes
         creLab = new Labirinto(maxLin, maxCol);
-        creLab.porParedeVertical(0,1,0);
-        creLab.porParedeHorizontal(0,1,0);
-        creLab.porParedeHorizontal(4, 7, 0);
-        creLab.porParedeVertical(0, 1, 7);
+        creLab.porParedeHorizontal(0, 7, 0);
+        creLab.porParedeHorizontal(0, 1, 1);
+        creLab.porParedeVertical(2, 3, 0);
         creLab.porParedeHorizontal(3, 5, 2);
-        creLab.porParedeHorizontal(3, 5, 3);
-        creLab.parede[3][7] = 1;
-        creLab.porParedeVertical(5, 8, 1);
-        creLab.porParedeHorizontal(1, 2, 5);
+        creLab.porParedeHorizontal(3, 6, 3);
+        creLab.parede[5][2] = 1;
+        creLab.porParedeHorizontal(5, 7, 5);
+        creLab.porParedeHorizontal(4, 7, 6);
+        creLab.porParedeHorizontal(4, 7, 7);
+        creLab.porParedeVertical(6, 8, 1);
         creLab.porParedeHorizontal(1, 2, 8);
-        creLab.porParedeVertical(6, 7, 4);
-        creLab.porParedeVertical(5, 6, 5);
-        creLab.porParedeVertical(5, 7, 7);
     }
 
     /*
@@ -102,7 +100,7 @@ public class Problema implements CoordenadasGeo {
             case SE: estado[0] += 1; estado[1] += 1; break;
             case SO: estado[0] += 1; estado[1] -= 1; break;
             case L: estado[1] += 1; break;
-            case O: estado[1] += 1; break;
+            case O: estado[1] -= 1; break;
         }
         // atribui nova posicao ao estado atual
         // defEstAtu(lin, col);
@@ -239,12 +237,6 @@ public class Problema implements CoordenadasGeo {
      * Retorna true quando estado atual = estado objetivo, caso contrario retorna falso
      */
     protected boolean testeObjetivo() {
-        //fazer o teste 
-        for (int i=0; i<2; i++) {
-            if(estAtu[i] != estObj[i])
-                break;
-            return true;
-        }
-        return false;
+        return estAtu[0] == estObj[0] && estAtu[1] == estObj[1];
     }
 }

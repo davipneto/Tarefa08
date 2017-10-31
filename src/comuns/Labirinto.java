@@ -1,15 +1,19 @@
 
 package comuns;
 
+import ambiente.Fruit;
+
 public class Labirinto {
     public int parede[][]; // armazena posicao das paredes marcando-as com 1
+    public Fruit frutas[][];
     private final int maxCol;     // maximo de colunas
     private final int maxLin;     // maximo de linhas
     
-    public Labirinto(int maxColunas, int maxLinhas) {
+    public Labirinto(int maxLinhas, int maxColunas) {
         maxCol = maxColunas;
         maxLin = maxLinhas;
-        parede = new int[maxCol][maxLin];
+        parede = new int[maxLin][maxCol];
+        frutas = new Fruit[maxLin][maxCol];
     }
     
    /*
@@ -37,6 +41,13 @@ public class Labirinto {
                 parede[l][coluna] = 1;
             }
         }
+    }
+    
+    public void carregaFrutas() {
+        int i,j;
+        for (i=0; i<maxLin; i++)
+            for (j=0; j<maxCol; j++)
+                frutas[i][j] = Fruit.randomFruit();
     }
     
 }
